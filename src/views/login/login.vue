@@ -63,7 +63,7 @@ export default {
     getValueFromChildComp(value) {
       this.childComponentValue = value;
     },
-    
+
     changeBtnColor() {
       this.color == "red"
         ? (this.color = "blue")
@@ -71,16 +71,18 @@ export default {
         ? (this.color = "red")
         : (this.color = "blue");
     },
-    //noObserverComputed
+    //noObserverComputed..
     renderComp() {
       return this.render;
     },
   },
+  //eaqul to useMemo()..
   computed: {
     reverse() {
       return this.cancelText.split("").reverse().join("");
     },
   },
+  //eaqul to useEffect()..
   watch: {
     render() {
       console.log("renderChanged..");
