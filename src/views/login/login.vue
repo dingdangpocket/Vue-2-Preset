@@ -26,15 +26,18 @@
     <div>{{ renderComp() }}</div>
     <div>{{ reverse }}</div>
     <button @click="changeCancelText">changeCancelText</button>
+    <Card />
   </div>
 </template>
 
 <script>
 import Model from "./components/model.vue";
+import Card from "./components/card";
 export default {
   name: "login",
   components: {
     Model,
+    Card,
   },
   data() {
     return {
@@ -87,6 +90,9 @@ export default {
     render() {
       console.log("renderChanged..");
     },
+  },
+  render() {
+    return <div>hello</div>;
   },
 };
 </script>
