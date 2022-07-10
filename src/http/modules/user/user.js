@@ -20,7 +20,7 @@ export default {
             'Content-Type':'application/json'},
        })
     },
-    getRoleMenu(data){
+    getRoleMenu(){
         return axios({
             method:"GET",
             url:"/auth/menu/MenuTreeSelectByRole",
