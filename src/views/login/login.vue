@@ -22,6 +22,10 @@
       :color="color"
     />
     <div>{{ childComponentValue }}</div>
+    <div id="container"></div>
+    <div>{{ renderComp() }}</div>
+    <div>{{ reverse }}</div>
+    <button @click="changeCancelText">changeCancelText</button>
   </div>
 </template>
 
@@ -42,17 +46,24 @@ export default {
     };
   },
 
-  mounted() {},
+  mounted() {
+    const containerRef = document.getElementById("container");
+    containerRef.innerHTML = `<div>静态${this.render}<div>`;
+  },
 
   methods: {
     //current methods
     changeType() {
       this.render++;
     },
+    changeCancelText() {
+      this.cancelText = "中华儿女";
+    },
     //model comp methods
     getValueFromChildComp(value) {
       this.childComponentValue = value;
     },
+    
     changeBtnColor() {
       this.color == "red"
         ? (this.color = "blue")
@@ -60,9 +71,22 @@ export default {
         ? (this.color = "red")
         : (this.color = "blue");
     },
+    //noObserverComputed
+    renderComp() {
+      return this.render;
+    },
+  },
+  computed: {
+    reverse() {
+      return this.cancelText.split("").reverse().join("");
+    },
+  },
+  watch: {
+    render() {
+      console.log("renderChanged..");
+    },
   },
 };
 </script>
-
 <style lang="scss" scoped>
 </style>
