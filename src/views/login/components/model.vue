@@ -1,7 +1,6 @@
 <template>
   <div>
     <div>MODEL</div>
-    <div>{{ title }}</div>
     <div>{{ modelTitle }}</div>
     <div
       :style="{
@@ -12,12 +11,20 @@
       {{ cancelText }}
     </div>
     <button @click="changeBtnColor">改变颜色</button>
-    <div>{{ this.$store.state.member.pages }}</div>
-    <div>{{ this.$store.state.user.userName }}</div>
+    <div>VueX {{ this.$store.state.member.pages }}</div>
+    <div>VueX {{ this.$store.state.user.userName }}</div>
+    <div>VueXFormUserMapState {{ userName }}</div>
+    <div class="active">{{ pages + total }}</div>
+    <div :class="{ show: isActive }">{{ title }}</div>
+    <button @click="onVisible">VISIBLE</button>
   </div>
 </template>
 
 <script>
+import { createNamespacedHelpers } from "vuex";
+const { mapState: userMapState } = createNamespacedHelpers("user");
+const { mapState: memberMapState, mapActions: memberMapActions } =
+  createNamespacedHelpers("member");
 export default {
   name: "model",
   props: {
@@ -29,7 +36,8 @@ export default {
   },
   data() {
     return {
-      title: "",
+      title: "SHOW",
+      isActive: true,
     };
   },
   mounted() {
@@ -38,9 +46,26 @@ export default {
     console.log("this.props", this.$store.state.user.userName);
     this.getValueFromChildComp("来自子组件的参数-1000");
   },
-  methods: {},
+  methods: {
+    ...memberMapActions(["getDataAsync"]),
+    onVisible() {
+      this.isActive = !this.isActive;
+    },
+  },
+  computed: {
+    ...userMapState(["userName"]),
+    ...memberMapState(["pages", "total"]),
+  },
 };
 </script>
 
 <style lang="scss" scoped>
+.active {
+  color: orange;
+  font-size: 100px;
+}
+.show {
+  color: orange;
+  font-size: 100px;
+}
 </style>
