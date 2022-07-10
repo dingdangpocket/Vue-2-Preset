@@ -12,6 +12,8 @@
       {{ cancelText }}
     </div>
     <button @click="changeBtnColor">改变颜色</button>
+    <div>{{ this.$store.state.member.pages }}</div>
+    <div>{{ this.$store.state.user.userName }}</div>
   </div>
 </template>
 
@@ -32,6 +34,8 @@ export default {
   },
   mounted() {
     console.log("this.props", this._props);
+    console.log("this.props", this.$store.state.member.pages);
+    console.log("this.props", this.$store.state.user.userName);
     this.getValueFromChildComp("来自子组件的参数-1000");
   },
   methods: {},
