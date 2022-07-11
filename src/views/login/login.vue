@@ -1,5 +1,6 @@
 <template>
   <div>
+    <router-link to="/home">首页</router-link>
     <div>{{ render }}</div>
     <div v-if="render == 0">
       <div>A组件</div>
