@@ -11,11 +11,6 @@
       </div>
     </div>
     <div class="footer">hello,footer</div>
-    <div class="gird">
-      <div class="goodItem" v-for="item in goods" :key="item">
-        {{ item }}
-      </div>
-    </div>
   </div>
 </template>
 
