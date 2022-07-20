@@ -3,6 +3,8 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import './plugins/element.js'
+import installDirective from "./directive";
+Vue.use(installDirective);
 
 //所有axios加基础路径;
 import axios from "axios";
