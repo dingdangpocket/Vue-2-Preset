@@ -2,7 +2,7 @@
   <div>
     <div class="container">
       <div class="title">
-        中华人民共和国,中华人民共和国,中华人民共和国,中华人民共和国
+        测试文本内容
       </div>
     </div>
     <div class="goodsContainer">
