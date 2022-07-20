@@ -32,7 +32,10 @@ Vue.prototype.$api = api;
 // })
 
 Vue.config.productionTip = false;
-
+console.log('NODE_ENV-------'+ process.env.NODE_ENV)
+//默认的环境变量访问;
+console.log('NODE_ENV-------'+ process.env.VUE_APP_SERVER_URL)
+//配置在.env中的环境变量;
 new Vue({
   router,
   store,

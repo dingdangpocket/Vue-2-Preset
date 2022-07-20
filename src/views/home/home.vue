@@ -20,12 +20,29 @@ export default {
   data() {
     return {
       goods: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+      items: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
     };
   },
 
-  mounted() {},
-
-  methods: {},
+  mounted() {
+    console.log("this.sort(good)", this.sort(this.good));
+  },
+  
+  methods: {
+    sort(arr) {
+      let temp;
+      arr.forEach(() => {
+        arr.forEach((item, k) => {
+          if (arr[k] > arr[k + 1]) {
+            temp = arr[k];
+            arr[k] = arr[k + 1];
+            arr[k + 1] = temp;
+          }
+        });
+      });
+      return arr;
+    },
+  },
 };
 </script>
 
@@ -46,9 +63,6 @@ export default {
   }
 }
 .goodsContainer {
-  /* overflow-y: auto; */
-  /* width: 100vw; */
-  /* height:300px; */
   font-size: 10px;
   display: grid;
   background: rgb(192, 99, 13);
@@ -71,5 +85,4 @@ export default {
   height: 30px;
   background: red;
 }
-
 </style>
