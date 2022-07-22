@@ -13,10 +13,6 @@
     </div> -->
     <Show
       :formItems="formItems"
-      firstInterlocks="parkingType"
-      firstInterlocksIndex="2"
-      secondInterlocks="fileType"
-      secondInterlocksIndex="3"
       thirdInterlocks="areaType"
       thirdInterlocksIndex="4"
     />
@@ -58,7 +54,11 @@ export default {
           label: "城市",
           prop: "fileType",
           type: "select",
-          options: [],
+          options: [
+            { label: "中国", value: "中国" },
+            { label: "美国", value: "美国" },
+            { label: "加拿大", value: "加拿大" },
+          ],
           bind: "ruleForm.fileType",
           autocomplete: "off",
           interlocksIndex: 2,
@@ -67,7 +67,11 @@ export default {
           label: "区域",
           prop: "areaType",
           type: "select",
-          options: [],
+          options: [
+            { label: "中国", value: "中国" },
+            { label: "美国", value: "美国" },
+            { label: "加拿大", value: "加拿大" },
+          ],
           bind: "ruleForm.areaType",
           autocomplete: "off",
           interlocksIndex: 3,

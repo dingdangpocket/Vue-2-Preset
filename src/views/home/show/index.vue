@@ -69,6 +69,7 @@ export default {
   },
   watch: {
     firstInterlocksRef() {
+      if (!this.firstInterlocks || !this.firstInterlocksIndex) return;
       const params = this.ruleForm[this.firstInterlocks];
       console.log(params);
       if (params == "中国") {
@@ -95,6 +96,12 @@ export default {
     },
 
     secondInterlocksRef() {
+      if (
+        !this.secondInterlocks ||
+        !this.secondInterlocksIndex ||
+        !this.thirdInterlocks
+      )
+        return;
       const params = this.ruleForm[this.secondInterlocks];
       console.log(params);
       if (params == "海南") {
@@ -103,7 +110,9 @@ export default {
           { label: "护天区", value: "护天区" },
         ];
         this.ruleForm[this.thirdInterlocks] =
-          this.formItemsState[Number(this.secondInterlocksIndex)].options[0].value;
+          this.formItemsState[
+            Number(this.secondInterlocksIndex)
+          ].options[0].value;
       }
       if (params == "北京") {
         this.formItemsState[Number(this.secondInterlocksIndex)].options = [
@@ -111,7 +120,9 @@ export default {
           { label: "五道口", value: "五道口" },
         ];
         this.ruleForm[this.thirdInterlocks] =
-          this.formItemsState[Number(this.secondInterlocksIndex)].options[0].value;
+          this.formItemsState[
+            Number(this.secondInterlocksIndex)
+          ].options[0].value;
       }
     },
   },
