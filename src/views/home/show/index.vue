@@ -41,12 +41,9 @@ export default {
   name: "show",
   props: {
     formItems: Array,
-    firstInterlocks: String,
-    firstInterlocksIndex: String,
-    secondInterlocks: String,
-    secondInterlocksIndex: String,
-    thirdInterlocks: String,
-    thirdInterlocksIndex: String,
+    firstInterlocks: Object,
+    secondInterlocks: Object,
+    thirdInterlocks: Object,
   },
   data() {
     return {
@@ -61,67 +58,60 @@ export default {
   },
   computed: {
     firstInterlocksRef() {
-      return this.ruleForm[this.firstInterlocks];
+      return this.ruleForm[this.firstInterlocks.attr];
     },
     secondInterlocksRef() {
-      return this.ruleForm[this.secondInterlocks];
+      return this.ruleForm[this.secondInterlocks.attr];
     },
   },
   watch: {
     firstInterlocksRef() {
-      if (!this.firstInterlocks || !this.firstInterlocksIndex) return;
-      const params = this.ruleForm[this.firstInterlocks];
+      if (!this.firstInterlocks) return;
+      const params = this.ruleForm[this.firstInterlocks.attr];
       console.log(params);
       if (params == "中国") {
-        this.formItemsState[Number(this.firstInterlocksIndex)].options = [
+        this.formItemsState[this.firstInterlocks.locksIndex].options = [
           { label: "海南", value: "海南" },
           { label: "北京", value: "北京" },
         ];
-        this.ruleForm[this.secondInterlocks] =
-          this.formItemsState[
-            Number(this.firstInterlocksIndex)
-          ].options[0].value;
+        this.ruleForm[this.secondInterlocks.attr] =
+          this.formItemsState[this.firstInterlocks.locksIndex].options[0].value;
       }
       if (params == "美国") {
-        this.formItemsState[Number(this.firstInterlocksIndex)].options = [
+        this.formItemsState[this.firstInterlocks.locksIndex].options = [
           { label: "加州", value: "加州" },
           { label: "洛杉矶", value: "洛杉矶" },
           { label: "西雅图", value: "西雅图" },
         ];
-        this.ruleForm[this.secondInterlocks] =
+        this.ruleForm[this.secondInterlocks.attr] =
           this.formItemsState[
-            Number(this.firstInterlocksIndex)
+            Number(this.firstInterlocks.locksIndex)
           ].options[0].value;
       }
     },
 
     secondInterlocksRef() {
-      if (
-        !this.secondInterlocks ||
-        !this.secondInterlocksIndex ||
-        !this.thirdInterlocks
-      )
-        return;
-      const params = this.ruleForm[this.secondInterlocks];
+      if (!this.secondInterlocks || !this.thirdInterlocks) return;
+      const params = this.ruleForm[this.secondInterlocks.attr];
       console.log(params);
       if (params == "海南") {
-        this.formItemsState[Number(this.secondInterlocksIndex)].options = [
+        this.formItemsState[this.secondInterlocks.locksIndex].options = [
           { label: "飞天区", value: "飞天区" },
           { label: "护天区", value: "护天区" },
         ];
-        this.ruleForm[this.thirdInterlocks] =
+        this.ruleForm[this.thirdInterlocks.attr] =
           this.formItemsState[
-            Number(this.secondInterlocksIndex)
+            this.secondInterlocks.locksIndex
           ].options[0].value;
       }
       if (params == "北京") {
-        this.formItemsState[Number(this.secondInterlocksIndex)].options = [
+        this.formItemsState[this.secondInterlocks.locksIndex].options = [
           { label: "朝阳", value: "朝阳" },
           { label: "五道口", value: "五道口" },
         ];
-        this.ruleForm[this.thirdInterlocks] =
+        this.ruleForm[this.thirdInterlocks.attr] =
           this.formItemsState[
-            Number(this.secondInterlocksIndex)
+            this.secondInterlocks.locksIndex
           ].options[0].value;
       }
     },

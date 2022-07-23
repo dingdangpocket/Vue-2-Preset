@@ -1,20 +1,10 @@
 <template>
   <div>
-    <!-- <div class="container">
-      <div class="title">测试文本内容</div>
-    </div>
-    <div class="goodsContainer">
-      <div class="goodItem" v-for="item in goods" :key="item">
-        {{ item }}
-      </div>
-    </div>
-    <div class="footer" v-style="{ color: 'orange', text: 'newText' }">
-      hello,directive
-    </div> -->
     <Show
       :formItems="formItems"
-      thirdInterlocks="areaType"
-      thirdInterlocksIndex="4"
+      :firstInterlocks="{ attr: 'parkingType', locksIndex: 2 }"
+      :secondInterlocks="{ attr: 'fileType', locksIndex: 3 }"
+      :thirdInterlocks="{ attr: 'areaType', locksIndex: 4 }"
     />
   </div>
 </template>
@@ -80,8 +70,8 @@ export default {
     };
   },
   mounted() {
-    // console.log("this.sort(good)", this.sort(this.good));
-    // this.promiseFunctions();
+    console.log("this.sort(good)", this.sort(this.good));
+    this.promiseFunctions();
     // this.getData();
   },
   methods: {
