@@ -57,15 +57,15 @@ export default {
     this.ruleForm = { parkingType: "中国", fileType: "海南", areaType: "飞天" };
   },
   computed: {
-    firstInterlocksRef() {
+    firstInterlocksWatcher() {
       return this.ruleForm[this.firstInterlocks.attr];
     },
-    secondInterlocksRef() {
+    secondInterlocksWatcher() {
       return this.ruleForm[this.secondInterlocks.attr];
     },
   },
   watch: {
-    firstInterlocksRef() {
+    firstInterlocksWatcher() {
       if (!this.firstInterlocks) return;
       const params = this.ruleForm[this.firstInterlocks.attr];
       console.log(params);
@@ -84,13 +84,11 @@ export default {
           { label: "西雅图", value: "西雅图" },
         ];
         this.ruleForm[this.secondInterlocks.attr] =
-          this.formItemsState[
-            Number(this.firstInterlocks.locksIndex)
-          ].options[0].value;
+          this.formItemsState[this.firstInterlocks.locksIndex].options[0].value;
       }
     },
 
-    secondInterlocksRef() {
+    secondInterlocksWatcher() {
       if (!this.secondInterlocks || !this.thirdInterlocks) return;
       const params = this.ruleForm[this.secondInterlocks.attr];
       console.log(params);
