@@ -4,6 +4,7 @@
       :model="ruleForm"
       ref="ruleForm"
       label-width="100px"
+      :rules="rules"
       class="demo-ruleForm"
     >
       <div v-for="item in formItemsState" :key="JSON.stringify(item)">
@@ -44,11 +45,13 @@ export default {
     firstInterlocks: Object,
     secondInterlocks: Object,
     thirdInterlocks: Object,
+    rulesOptions: Object,
   },
   data() {
     return {
       ruleForm: {},
       formItemsState: [],
+      rules: this.rulesOptions,
     };
   },
   mounted() {
@@ -131,7 +134,7 @@ export default {
 
 <style lang="scss" scoped>
 .container {
-  background: red;
-  width: 200px;
+  background: rgb(215, 215, 215);
+  width: 400px;
 }
 </style>

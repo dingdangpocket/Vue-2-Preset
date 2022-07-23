@@ -5,6 +5,7 @@
       :firstInterlocks="{ attr: 'parkingType', locksIndex: 2 }"
       :secondInterlocks="{ attr: 'fileType', locksIndex: 3 }"
       :thirdInterlocks="{ attr: 'areaType', locksIndex: 4 }"
+      :rulesOptions="rules"
     />
   </div>
 </template>
@@ -66,7 +67,27 @@ export default {
           autocomplete: "off",
           interlocksIndex: 3,
         },
+        {
+          label: "文件",
+          prop: "file",
+          type: "input",
+          bind: "ruleForm.file",
+          autocomplete: "off",
+        },
       ],
+      rules: {
+        file: [
+          {
+            required: true,
+            validator: (rule, value, callback) => {
+              if (value != 18) {
+                callback(new Error("必须年满18岁"));
+              }
+            },
+            trigger: "change",
+          },
+        ],
+      },
     };
   },
   mounted() {
